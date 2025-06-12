@@ -39,33 +39,6 @@ content = converter.get_content("https://example.com")
 print(content)
 ```
 
-### 批量处理
-
-```python
-from pyweb2md import Web2MD
-
-# 批量处理文档站点
-docs_urls = [
-    "https://docs.python.org/3/tutorial/",
-    "https://docs.python.org/3/library/", 
-    "https://docs.python.org/3/reference/"
-]
-
-converter = Web2MD()
-results = converter.batch_extract(docs_urls)
-
-# 构建知识库
-knowledge_base = []
-for result in results:
-    if result['content']:
-        knowledge_base.append({
-            'title': result['title'],
-            'content': result['content'], 
-            'extraction_time': result['metadata']['extraction_time']
-        })
-
-print(f"成功提取了 {len(knowledge_base)} 个文档")
-```
 
 ## 🚀 主要特性
 
@@ -110,55 +83,7 @@ print(f"成功提取了 {len(knowledge_base)} 个文档")
 }
 ```
 
-## 🤖 与LLM应用集成
 
-```python
-import openai
-from pyweb2md import Web2MD
-
-def analyze_webpage_with_llm(url: str, question: str):
-    """使用LLM分析网页内容"""
-    
-    # 1. 提取并优化网页内容
-    converter = Web2MD()
-    result = converter.extract(url)
-    
-    # 2. 检查提取结果
-    if not result['content']:
-        return "网页提取失败：无法获取内容"
-    
-    # 3. 检查内容长度（用户控制）
-    content_length = len(result['content'])
-    if content_length > 10000:  # 大约3500 tokens
-        print("⚠️ 内容较长，建议分段处理")
-        
-    # 4. 构建LLM输入
-    prompt = f"""
-请分析以下网页内容并回答问题：
-
-网页标题: {result['title']}
-内容:
-{result['content']}
-
-问题: {question}
-"""
-    
-    # 5. 调用LLM
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=1000
-    )
-    
-    return response.choices[0].message.content
-
-# 使用示例
-answer = analyze_webpage_with_llm(
-    "https://docs.python.org/3/tutorial/",
-    "Python的主要特性有哪些？"
-)
-print(answer)
-```
 
 ## 🔧 配置选项
 
