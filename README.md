@@ -116,7 +116,6 @@ pip install pyweb2md
 - **Python版本**: 3.8+
 - **操作系统**: Windows, macOS, Linux  
 - **浏览器**: Chrome (自动管理ChromeDriver)
-- **内存**: 建议4GB+
 
 ## 🏗️ 核心依赖
 
@@ -153,14 +152,5 @@ Web2MD(config: Optional[Dict] = None)
 ## 📄 许可证
 
 本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
-## 🔗 相关链接
-
-- 🏠 **项目主页**: https://github.com/username/pyweb2md
-- 🐛 **问题反馈**: https://github.com/username/pyweb2md/issues
-- 📚 **文档**: https://pyweb2md.readthedocs.io
-- 💬 **讨论**: https://github.com/username/pyweb2md/discussions
-
----
 
 **注意**: 本项目专注于网页内容提取和转换，不包含业务逻辑控制。适合作为其他LLM应用的基础组件使用。 
