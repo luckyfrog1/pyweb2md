@@ -47,12 +47,14 @@ print(content)
 - 🧭 **导航提取** - 提取页面导航结构（面包屑、上下页等）
 - 🖼️ **图片处理** - 提取图片链接，转换为Markdown格式
 - ⚡ **纯数据转换** - 专注转换质量，控制逻辑留给用户
-- 🔄 **批量处理** - 支持多URL并发处理
+
 
 ## 📊 输出格式
 
 ```python
 {
+    “url”: "xxxx",
+    "title": "xxxxxxxx",
     # 核心内容 - 清洗后的Markdown
     "content": "# Python 3.12 Documentation\n\n## Quick Start\n...",
     
@@ -105,10 +107,7 @@ result = converter.extract("https://example.com")
 ## 📦 开发版本安装
 
 ```bash
-# 开发版本安装（包含测试工具）
-pip install pyweb2md[dev]
-
-# 标准安装（推荐）
+# 标准安装
 pip install pyweb2md
 ```
 
